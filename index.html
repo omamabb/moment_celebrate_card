@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish Generator 🎂✨</title>
+    <!-- Modern and joyful Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Desktop Navigation Header -->
+    <header class="app-header">
+        <div class="logo">
+            <span class="logo-icon">🎂</span>
+            <span class="logo-text">JoyfulWishes</span>
+        </div>
+        <nav class="desktop-nav">
+            <button class="nav-tab active" data-target="home-view">Home</button>
+            <button class="nav-tab" data-target="generator-view">Create Wish</button>
+            <button class="nav-tab" data-target="templates-view">Templates</button>
+            <button class="nav-tab" data-target="saved-view">Saved (<span class="saved-count">0</span>)</button>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="app-container">
+
+        <!-- 1. LANDING/HOME VIEW -->
+        <section id="home-view" class="view-section active">
+            <div class="hero-section">
+                <div class="sparkles-container">
+                    <span class="sparkle sp-1">✨</span>
+                    <span class="sparkle sp-2">⭐</span>
+                    <span class="sparkle sp-3">✨</span>
+                </div>
+                <h1 class="hero-title">Create the Perfect <br><span class="gradient-text">Birthday Wish</span> 🎂</h1>
+                <p class="hero-subtitle">Generate warm, personalized, and premium birthday wishes for anyone in seconds. Powered by smart generation. No generic templates required!</p>
+                <button class="cta-btn primary-btn" onclick="switchView('generator-view')">Create a Wish ✨</button>
+            </div>
+
+            <!-- Example Wishes Slider/Grid -->
+            <div class="home-examples-section">
+                <h2 class="section-title">Inspiration & Ideas</h2>
+                <div class="examples-grid">
+                    <div class="example-mini-card">
+                        <div class="example-tag sweet">Sweet</div>
+                        <p class="example-text">"To my amazing sister, may your day be as bright and beautiful as your smile. Wishing you a year ahead filled with sweet surprises and happy memories!"</p>
+                    </div>
+                    <div class="example-mini-card">
+                        <div class="example-tag funny">Funny</div>
+                        <p class="example-text">"Happy Birthday to my partner-in-crime! You're officially one year closer to getting those senior citizen discounts. Have a fantastic day!"</p>
+                    </div>
+                    <div class="example-mini-card">
+                        <div class="example-tag formal">Formal</div>
+                        <p class="example-text">"Wishing you a very happy birthday and continued success in the year ahead. Thank you for your leadership and guidance."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works Section -->
+            <div class="how-it-works">
+                <h2 class="section-title">How it works</h2>
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <h3>Fill details</h3>
+                        <p>Enter their name, relationship, select your tone, and add optional special details.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <h3>Generate & Tweak</h3>
+                        <p>Our synthesizer writes a bespoke message instantly. Edit it directly on the card.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <h3>Save & Share</h3>
+                        <p>Copy to clipboard, save to favorites, or share directly to WhatsApp and Facebook.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. GENERATOR VIEW -->
+        <section id="generator-view" class="view-section">
+            <div class="generator-container">
+                <div class="form-header">
+                    <h2 class="generator-title">Wish Generator 🌟</h2>
+                    <p class="generator-subtitle">Tailor the perfect custom card. Just fill out the fields below.</p>
+                </div>
+                
+                <form id="wish-form" class="wish-form" onsubmit="handleGenerate(event)">
+                    <div class="form-group">
+                        <label for="recipient-name">Recipient's Name <span class="required">*</span></label>
+                        <input type="text" id="recipient-name" required placeholder="e.g. Alex, Sarah, Dad, Boss" class="form-input">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="recipient-relation">Relationship <span class="required">*</span></label>
+                            <select id="recipient-relation" required class="form-select">
+                                <option value="" disabled selected>Select relationship</option>
+                                <option value="friend">Friend</option>
+                                <option value="best friend">Best Friend</option>
+                                <option value="brother">Brother</option>
+                                <option value="sister">Sister</option>
+                                <option value="parent">Parent</option>
+                                <option value="partner">Partner</option>
+                                <option value="colleague">Colleague</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="wish-tone">Tone <span class="required">*</span></label>
+                            <select id="wish-tone" required class="form-select">
+                                <option value="" disabled selected>Select tone</option>
+                                <option value="sweet">Sweet & Warm</option>
+                                <option value="emotional">Emotional & Deep</option>
+                                <option value="funny">Funny & Playful</option>
+                                <option value="heartfelt">Heartfelt & Caring</option>
+                                <option value="formal">Formal & Polite</option>
+                                <option value="short">Short & Simple</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="wish-lang">Language <span class="required">*</span></label>
+                            <select id="wish-lang" required class="form-select">
+                                <option value="en" selected>English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wish-detail">Personal Detail / Inside Joke <span class="optional">(Optional)</span></label>
+                        <textarea id="wish-detail" rows="2" placeholder="e.g. loves coding, going to drink coffee, starting university, enjoys hiking" class="form-textarea"></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-btn primary-btn submit-btn">Generate Birthday Wish ✨</button>
+                </form>
+            </div>
+
+            <!-- Generated Wish Section -->
+            <div id="generated-result-section" class="generated-result-section hidden transition-fade">
+                <div class="result-divider"></div>
+                <h3 class="section-title">Your Generated Card</h3>
+
+                <div class="birthday-wish-card" id="wish-card-element">
+                    <div class="card-confetti-bg">🎉 🌟 ✨ 🎂 🥳</div>
+                    
+                    <!-- Editable Wish Content -->
+                    <div class="card-content-area">
+                        <textarea id="wish-output" class="wish-output-textarea" readonly aria-label="Generated wish text"></textarea>
+                    </div>
+
+                    <div class="card-edit-hint">Click "Edit Wish" to manually customize this text!</div>
+
+                    <div class="card-actions">
+                        <button id="save-card-btn" class="card-action-btn secondary-btn" onclick="saveActiveWish()">
+                            <span class="btn-icon">⭐</span> <span class="btn-text">Save Favorite</span>
+                        </button>
+                        <button class="card-action-btn primary-btn" onclick="copyActiveWish()">
+                            <span class="btn-icon">📋</span> Copy Text
+                        </button>
+                    </div>
+                </div>
+
+                <div class="wish-toolbar">
+                    <button class="toolbar-btn outline-btn" id="edit-toggle-btn" onclick="toggleEditWish()">
+                        ✏️ Edit Wish
+                    </button>
+                    <button class="toolbar-btn outline-btn" onclick="regenerateActiveWish()">
+                        🔄 Generate Again
+                    </button>
+                    <button class="toolbar-btn outline-btn" onclick="openShareModal()">
+                        📤 Share Wish
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. QUICK TEMPLATES VIEW -->
+        <section id="templates-view" class="view-section">
+            <div class="templates-header">
+                <h2 class="templates-title">Quick Wish Templates 📂</h2>
+                <p class="templates-subtitle">Explore premium curated wishes. Click any card to copy or customize.</p>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="templates-categories">
+                <button class="category-tab active" data-category="short">Short</button>
+                <button class="category-tab" data-category="emotional">Emotional</button>
+                <button class="category-tab" data-category="funny">Funny</button>
+                <button class="category-tab" data-category="best-friend">Best Friend</button>
+                <button class="category-tab" data-category="family">Family</button>
+                <button class="category-tab" data-category="professional">Professional</button>
+                <button class="category-tab" data-category="bengali">বাংলা wishes</button>
+            </div>
+
+            <!-- Templates Grid Container -->
+            <div id="templates-grid" class="templates-grid">
+                <!-- Javascript will load template cards here -->
+            </div>
+        </section>
+
+        <!-- 4. SAVED / FAVORITES VIEW -->
+        <section id="saved-view" class="view-section">
+            <div class="saved-header">
+                <h2 class="saved-title">Saved Wishes 💖</h2>
+                <p class="saved-subtitle">Your favorite wishes stored locally for this browser session.</p>
+            </div>
+
+            <!-- Saved Wishes Grid -->
+            <div id="saved-wishes-grid" class="saved-wishes-grid">
+                <!-- Javascript will populate saved wishes here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="saved-empty-state" class="empty-state-container">
+                <span class="empty-emoji">🎁</span>
+                <h3>No saved wishes yet</h3>
+                <p>Start generating and save your favorite wishes. They'll show up here!</p>
+                <button class="cta-btn primary-btn" onclick="switchView('generator-view')">Generate a Wish</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Navigation Bottom Bar -->
+    <nav class="mobile-nav">
+        <button class="mobile-nav-btn active" data-target="home-view">
+            <span class="mobile-nav-icon">🏠</span>
+            <span class="mobile-nav-label">Home</span>
+        </button>
+        <button class="mobile-nav-btn" data-target="generator-view">
+            <span class="mobile-nav-icon">🪄</span>
+            <span class="mobile-nav-label">Create</span>
+        </button>
+        <button class="mobile-nav-btn" data-target="templates-view">
+            <span class="mobile-nav-icon">📂</span>
+            <span class="mobile-nav-label">Templates</span>
+        </button>
+        <button class="mobile-nav-btn" data-target="saved-view">
+            <span class="mobile-nav-icon">💖</span>
+            <span class="mobile-nav-label">Saved</span>
+            <span class="mobile-badge hidden">0</span>
+        </button>
+    </nav>
+
+    <!-- Share Options Modal -->
+    <div id="share-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Share Your Birthday Wish</h3>
+                <button class="modal-close" onclick="closeShareModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="share-preview-text" id="share-preview"></p>
+                <div class="share-buttons-container">
+                    <button class="share-option-btn whatsapp-share" onclick="shareToWhatsApp()">
+                        <span class="share-icon">💬</span> WhatsApp
+                    </button>
+                    <button class="share-option-btn facebook-share" onclick="shareToFacebook()">
+                        <span class="share-icon">📘</span> Facebook
+                    </button>
+                    <button class="share-option-btn native-share" id="system-share-btn" onclick="shareNative()">
+                        <span class="share-icon">📲</span> System Share
+                    </button>
+                    <button class="share-option-btn copy-share" onclick="copySharedText()">
+                        <span class="share-icon">📋</span> Copy Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
