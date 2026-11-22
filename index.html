@@ -1,290 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wish Generator 🎂✨</title>
-    <!-- Modern and joyful Google Fonts -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf6f0">
+    <title>Cardistry — Interactive Letterbox & Gift Studio</title>
+    <meta name="description" content="Design and share a one-of-a-kind greeting card with varied layouts, custom colors, personal photos, and print-ready keepsakes—no account needed.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261122-variety5">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script defer src="script.js?v=20261122-variety6"></script>
 </head>
 <body>
-
-    <!-- Desktop Navigation Header -->
-    <header class="app-header">
-        <div class="logo">
-            <span class="logo-icon">🎂</span>
-            <span class="logo-text">JoyfulWishes</span>
-        </div>
-        <nav class="desktop-nav">
-            <button class="nav-tab active" data-target="home-view">Home</button>
-            <button class="nav-tab" data-target="generator-view">Create Wish</button>
-            <button class="nav-tab" data-target="templates-view">Templates</button>
-            <button class="nav-tab" data-target="saved-view">Saved (<span class="saved-count">0</span>)</button>
-        </nav>
-    </header>
-
-    <!-- Main Container -->
-    <main class="app-container">
-
-        <!-- 1. LANDING/HOME VIEW -->
-        <section id="home-view" class="view-section active">
-            <div class="hero-section">
-                <div class="sparkles-container">
-                    <span class="sparkle sp-1">✨</span>
-                    <span class="sparkle sp-2">⭐</span>
-                    <span class="sparkle sp-3">✨</span>
-                </div>
-                <h1 class="hero-title">Create the Perfect <br><span class="gradient-text">Birthday Wish</span> 🎂</h1>
-                <p class="hero-subtitle">Generate warm, personalized, and premium birthday wishes for anyone in seconds. Powered by smart generation. No generic templates required!</p>
-                <button class="cta-btn primary-btn" onclick="switchView('generator-view')">Create a Wish ✨</button>
+    <div class="page-particles" aria-hidden="true">
+        <span class="particle-star">✦</span><span class="particle-petal"></span><span class="particle-spark">✧</span>
+        <span class="particle-petal particle-petal-rose"></span><span class="particle-star particle-star-sage">✳</span><span class="particle-spark">✧</span>
+    </div>
+    <main id="studio" class="studio-shell">
+        <header class="topbar">
+            <a class="wordmark cardistry-wordmark" href="#" aria-label="Cardistry home">
+                <span class="brand-emblem" aria-hidden="true">✳</span><span>Cardistry</span>
+            </a>
+            <div class="topbar-note"><span class="status-dot"></span> A considered little gesture</div>
+        </header>
+        <section class="intro">
+            <div>
+                <p class="eyebrow">THE INTERACTIVE LETTERBOX &amp; GIFT STUDIO</p>
+                <h1>Make a moment <em>memorable.</em></h1>
+                <p class="intro-copy">Compose a note, tuck it into an envelope, and send it with a little ceremony.</p>
             </div>
-
-            <!-- Example Wishes Slider/Grid -->
-            <div class="home-examples-section">
-                <h2 class="section-title">Inspiration & Ideas</h2>
-                <div class="examples-grid">
-                    <div class="example-mini-card">
-                        <div class="example-tag sweet">Sweet</div>
-                        <p class="example-text">"To my amazing sister, may your day be as bright and beautiful as your smile. Wishing you a year ahead filled with sweet surprises and happy memories!"</p>
-                    </div>
-                    <div class="example-mini-card">
-                        <div class="example-tag funny">Funny</div>
-                        <p class="example-text">"Happy Birthday to my partner-in-crime! You're officially one year closer to getting those senior citizen discounts. Have a fantastic day!"</p>
-                    </div>
-                    <div class="example-mini-card">
-                        <div class="example-tag formal">Formal</div>
-                        <p class="example-text">"Wishing you a very happy birthday and continued success in the year ahead. Thank you for your leadership and guidance."</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- How It Works Section -->
-            <div class="how-it-works">
-                <h2 class="section-title">How it works</h2>
-                <div class="steps-container">
-                    <div class="step-card">
-                        <div class="step-num">1</div>
-                        <h3>Fill details</h3>
-                        <p>Enter their name, relationship, select your tone, and add optional special details.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-num">2</div>
-                        <h3>Generate & Tweak</h3>
-                        <p>Our synthesizer writes a bespoke message instantly. Edit it directly on the card.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-num">3</div>
-                        <h3>Save & Share</h3>
-                        <p>Copy to clipboard, save to favorites, or share directly to WhatsApp and Facebook.</p>
-                    </div>
-                </div>
-            </div>
+            <span class="intro-index">A personal note, made to keep <b>01 — 05</b></span>
         </section>
-
-        <!-- 2. GENERATOR VIEW -->
-        <section id="generator-view" class="view-section">
-            <div class="generator-container">
-                <div class="form-header">
-                    <h2 class="generator-title">Wish Generator 🌟</h2>
-                    <p class="generator-subtitle">Tailor the perfect custom card. Just fill out the fields below.</p>
-                </div>
-                
-                <form id="wish-form" class="wish-form" onsubmit="handleGenerate(event)">
-                    <div class="form-group">
-                        <label for="recipient-name">Recipient's Name <span class="required">*</span></label>
-                        <input type="text" id="recipient-name" required placeholder="e.g. Alex, Sarah, Dad, Boss" class="form-input">
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="recipient-relation">Relationship <span class="required">*</span></label>
-                            <select id="recipient-relation" required class="form-select">
-                                <option value="" disabled selected>Select relationship</option>
-                                <option value="friend">Friend</option>
-                                <option value="best friend">Best Friend</option>
-                                <option value="brother">Brother</option>
-                                <option value="sister">Sister</option>
-                                <option value="parent">Parent</option>
-                                <option value="partner">Partner</option>
-                                <option value="colleague">Colleague</option>
-                                <option value="teacher">Teacher</option>
-                                <option value="other">Other</option>
+        <div class="studio-grid">
+            <section class="editor-panel" aria-label="Card customizer">
+                <div class="panel-heading"><span class="step-index">01</span><div><h2>Start with the essentials</h2><p>Choose an occasion, add a name, and write a first note.</p></div></div>
+                <form id="card-form">
+                    <div class="field-grid">
+                        <div class="field"><label for="occasion">Occasion</label>
+                            <select id="occasion">
+                                <option value="birthday">Birthday</option><option value="eid">Eid Mubarak</option><option value="festive">Puja / Festive</option><option value="wedding">Wedding / Nikah</option><option value="anniversary">Anniversary</option><option value="thankyou">Thank you</option><option value="apology">Apology</option><option value="thinking">Missing you</option><option value="milestone">Milestone</option><option value="custom">Custom occasion</option>
                             </select>
+                            <div class="occasion-chips" role="group" aria-label="Popular occasions">
+                                <button type="button" class="occasion-chip" data-occasion-chip="birthday" aria-pressed="true">Birthday</button>
+                                <button type="button" class="occasion-chip" data-occasion-chip="eid" aria-pressed="false">Eid</button>
+                                <button type="button" class="occasion-chip" data-occasion-chip="festive" aria-pressed="false">Puja</button>
+                                <button type="button" class="occasion-chip" data-occasion-chip="wedding" aria-pressed="false">Wedding</button>
+                                <button type="button" class="occasion-chip" data-occasion-chip="anniversary" aria-pressed="false">Anniversary</button>
+                                <button type="button" class="occasion-chip" data-occasion-chip="thankyou" aria-pressed="false">Thank you</button>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="wish-tone">Tone <span class="required">*</span></label>
-                            <select id="wish-tone" required class="form-select">
-                                <option value="" disabled selected>Select tone</option>
-                                <option value="sweet">Sweet & Warm</option>
-                                <option value="emotional">Emotional & Deep</option>
-                                <option value="funny">Funny & Playful</option>
-                                <option value="heartfelt">Heartfelt & Caring</option>
-                                <option value="formal">Formal & Polite</option>
-                                <option value="short">Short & Simple</option>
-                            </select>
-                        </div>
+                        <div class="field hidden" id="custom-occasion-field"><label for="custom-occasion">Name your occasion</label><input id="custom-occasion" maxlength="60" placeholder="A new beginning"></div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="wish-lang">Language <span class="required">*</span></label>
-                            <select id="wish-lang" required class="form-select">
-                                <option value="en" selected>English</option>
-                                <option value="bn">বাংলা (Bengali)</option>
-                            </select>
-                        </div>
+                    <div class="field-grid">
+                        <div class="field"><label for="recipient">To</label><input id="recipient" maxlength="60" placeholder="Their name" autocomplete="off"></div>
+                        <div class="field"><label for="sender">From</label><input id="sender" maxlength="60" placeholder="Your name" autocomplete="off"></div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="wish-detail">Personal Detail / Inside Joke <span class="optional">(Optional)</span></label>
-                        <textarea id="wish-detail" rows="2" placeholder="e.g. loves coding, going to drink coffee, starting university, enjoys hiking" class="form-textarea"></textarea>
+                    <div class="wish-editor quick-message">
+                        <div class="editor-label-row"><label for="wish">Your message <span>edit any time</span></label><span id="character-count" class="character-count">0</span></div>
+                        <textarea id="wish" rows="5" maxlength="1800" placeholder="Write your own note, or leave this blank for a thoughtful draft."></textarea>
+                        <div class="variation-actions"><p class="field-hint">Your words stay editable at every step.</p><button id="variation-button" class="text-button" type="button">Write another version ↗</button></div>
                     </div>
-
-                    <button type="submit" class="cta-btn primary-btn submit-btn">Generate Birthday Wish ✨</button>
+                    <button class="button button-dark generate-button" type="submit">Make my card <span aria-hidden="true">↗</span></button>
                 </form>
-            </div>
 
-            <!-- Generated Wish Section -->
-            <div id="generated-result-section" class="generated-result-section hidden transition-fade">
-                <div class="result-divider"></div>
-                <h3 class="section-title">Your Generated Card</h3>
-
-                <div class="birthday-wish-card" id="wish-card-element">
-                    <div class="card-confetti-bg">🎉 🌟 ✨ 🎂 🥳</div>
-                    
-                    <!-- Editable Wish Content -->
-                    <div class="card-content-area">
-                        <textarea id="wish-output" class="wish-output-textarea" readonly aria-label="Generated wish text"></textarea>
+                <details class="customize-details">
+                    <summary><span class="step-index">02</span><span><b>Message &amp; Vibe</b><small>Shape the voice, language, and personal details</small></span><span class="summary-chevron">⌄</span></summary>
+                    <div class="field-grid">
+                        <div class="field"><label for="relationship">Your relationship</label><select id="relationship"><option value="friend">A close friend</option><option value="partner">Partner</option><option value="family">Family</option><option value="mentor">Mentor / senior</option><option value="colleague">Colleague</option></select></div>
+                        <div class="field"><label for="profile">Message profile</label><select id="profile"><option value="sincere">Standard &amp; sincere</option><option value="literary">Poetic &amp; reflective</option><option value="wit">Dry wit &amp; clever</option><option value="playful">Funny &amp; lighthearted</option><option value="letter">Old-school letter</option><option value="formal">Formal &amp; gracious</option><option value="short">Short &amp; resonant</option></select></div>
                     </div>
-
-                    <div class="card-edit-hint">Click "Edit Wish" to manually customize this text!</div>
-
-                    <div class="card-actions">
-                        <button id="save-card-btn" class="card-action-btn secondary-btn" onclick="saveActiveWish()">
-                            <span class="btn-icon">⭐</span> <span class="btn-text">Save Favorite</span>
-                        </button>
-                        <button class="card-action-btn primary-btn" onclick="copyActiveWish()">
-                            <span class="btn-icon">📋</span> Copy Text
-                        </button>
+                    <div class="field"><label for="language">Language</label><select id="language"><option value="en">English</option><option value="bn">বাংলা · Bengali</option><option value="mixed">Thoughtful bilingual</option></select></div>
+                    <div class="range-pair">
+                        <label class="range-field" for="intensity"><span>Emotional warmth</span><span class="range-labels"><small>Quiet</small><small>Expressive</small></span><input id="intensity" type="range" min="0" max="100" value="38"></label>
+                        <label class="range-field" for="pacing"><span>Message pacing</span><span class="range-labels"><small>Concise</small><small>Reflective</small></span><input id="pacing" type="range" min="0" max="100" value="55"></label>
                     </div>
-                </div>
+                    <div class="field"><label for="memory">Shared memory <span>optional</span></label><textarea id="memory" rows="2" maxlength="180" placeholder="The late train, the tiny bookshop, that familiar story…"></textarea></div>
+                    <div class="field-grid">
+                        <div class="field"><label for="signoff">Sign-off <span>optional</span></label><input id="signoff" maxlength="80" placeholder="With care, Sam"></div>
+                        <div class="field"><label for="ps">P.S. <span>optional</span></label><input id="ps" maxlength="160" placeholder="One last thing to remember…"></div>
+                    </div>
+                </details>
 
-                <div class="wish-toolbar">
-                    <button class="toolbar-btn outline-btn" id="edit-toggle-btn" onclick="toggleEditWish()">
-                        ✏️ Edit Wish
-                    </button>
-                    <button class="toolbar-btn outline-btn" onclick="regenerateActiveWish()">
-                        🔄 Generate Again
-                    </button>
-                    <button class="toolbar-btn outline-btn" onclick="openShareModal()">
-                        📤 Share Wish
-                    </button>
-                </div>
-            </div>
-        </section>
+                <details class="customize-details">
+                    <summary><span class="step-index">03</span><span><b>Look &amp; Opening</b><small>Set the palette, frame, and first impression</small></span><span class="summary-chevron">⌄</span></summary>
+                    <div class="layout-toolbar"><p>Make this card feel like yours.</p><button id="surprise-design" class="button button-light" type="button">Surprise me ✨</button></div>
+                    <fieldset class="choice-set"><legend>Card format</legend>
+                        <div class="layout-options">
+                            <button type="button" class="layout-choice selected" data-group="layout" data-value="editorial"><b>Editorial letter</b><small>Classic stationery</small></button>
+                            <button type="button" class="layout-choice" data-group="layout" data-value="postcard"><b>Postcard</b><small>Stamp &amp; postmark</small></button>
+                            <button type="button" class="layout-choice" data-group="layout" data-value="polaroid"><b>Photo keepsake</b><small>Polaroid inspired</small></button>
+                            <button type="button" class="layout-choice" data-group="layout" data-value="playful"><b>Playful pop</b><small>Bright &amp; funny</small></button>
+                            <button type="button" class="layout-choice" data-group="layout" data-value="gallery"><b>Gallery</b><small>Quiet &amp; minimal</small></button>
+                            <button type="button" class="layout-choice" data-group="layout" data-value="festive"><b>Festive frame</b><small>Ornate &amp; celebratory</small></button>
+                        </div>
+                    </fieldset>
+                    <fieldset class="choice-set"><legend>Surface pattern</legend>
+                        <div class="pattern-options">
+                            <button type="button" class="pattern-choice selected" data-group="pattern" data-value="glow"><span class="pattern-preview pattern-glow"></span>Soft glow</button>
+                            <button type="button" class="pattern-choice" data-group="pattern" data-value="dots"><span class="pattern-preview pattern-dots"></span>Dots</button>
+                            <button type="button" class="pattern-choice" data-group="pattern" data-value="grid"><span class="pattern-preview pattern-grid"></span>Fine grid</button>
+                            <button type="button" class="pattern-choice" data-group="pattern" data-value="waves"><span class="pattern-preview pattern-waves"></span>Waves</button>
+                        </div>
+                    </fieldset>
+                    <fieldset class="choice-set"><legend>Card frame</legend>
+                        <div class="frame-options">
+                            <button type="button" class="frame-choice selected" data-group="frame" data-value="editorial">Editorial<br><small>Fine border</small></button>
+                            <button type="button" class="frame-choice" data-group="frame" data-value="double">Double gold<br><small>Filigree</small></button>
+                            <button type="button" class="frame-choice" data-group="frame" data-value="arch">Archway<br><small>Soft curve</small></button>
+                            <button type="button" class="frame-choice" data-group="frame" data-value="polaroid">Polaroid<br><small>Keepsake</small></button>
+                            <button type="button" class="frame-choice" data-group="frame" data-value="gallery">Gallery<br><small>Minimal</small></button>
+                            <button type="button" class="frame-choice" data-group="frame" data-value="botanical">Botanical<br><small>Royal garden</small></button>
+                        </div>
+                    </fieldset>
+                    <fieldset class="choice-set"><legend>Aesthetic theme</legend>
+                        <div class="theme-options">
+                            <button type="button" class="theme-choice selected" data-group="theme" data-value="velvet"><span class="theme-swatch swatch-velvet"></span><span>Warm ivory<br><small>Antique gold</small></span></button>
+                            <button type="button" class="theme-choice" data-group="theme" data-value="ivory"><span class="theme-swatch swatch-ivory"></span><span>Blush rose<br><small>Pearl</small></span></button>
+                            <button type="button" class="theme-choice" data-group="theme" data-value="vermilion"><span class="theme-swatch swatch-vermilion"></span><span>Warm terracotta<br><small>Sand</small></span></button>
+                            <button type="button" class="theme-choice" data-group="theme" data-value="nordic"><span class="theme-swatch swatch-nordic"></span><span>Soft lavender<br><small>Moonlight</small></span></button>
+                            <button type="button" class="theme-choice" data-group="theme" data-value="emerald"><span class="theme-swatch swatch-emerald"></span><span>Sage &amp; cream<br><small>Botanical stationery</small></span></button>
+                            <button type="button" class="theme-choice" data-group="theme" data-value="twilight"><span class="theme-swatch swatch-twilight"></span><span>Starry twilight<br><small>Evening blue</small></span></button>
+                        </div>
+                    </fieldset>
+                    <div class="range-pair">
+                        <label class="range-field" for="frame-thickness"><span>Frame thickness</span><input id="frame-thickness" type="range" min="1" max="12" value="2"></label>
+                        <label class="range-field" for="corner-radius"><span>Corner radius</span><input id="corner-radius" type="range" min="0" max="36" value="4"></label>
+                    </div>
+                    <div class="field-grid">
+                        <div class="field"><label for="accent-color">Accent override</label><input id="accent-color" type="color" value="#ad8752"></div>
+                        <div class="field"><label for="background-color">Paper color</label><input id="background-color" type="color" value="#f7f0e2"></div>
+                        <div class="field"><label for="font">Typography pairing</label><select id="font"><option value="serif">Classic serif</option><option value="script">Handwritten script</option><option value="modern">Clean modern sans</option></select></div>
+                    </div>
+                    <label class="toggle-label background-toggle"><input id="background-override" type="checkbox"><span class="toggle-ui"></span><span>Use my paper color</span></label>
+                    <fieldset class="photo-controls">
+                        <legend>Personal photo</legend>
+                        <label class="photo-upload"><span>Choose a photo <small>JPG, PNG, or WebP · compressed in your browser</small></span><input id="photo-upload" type="file" accept="image/*"></label>
+                        <div class="field-grid">
+                            <div class="field"><label for="photo-frame">Photo frame</label><select id="photo-frame"><option value="polaroid">Polaroid</option><option value="rounded">Rounded</option><option value="circle">Circle</option><option value="banner">Full-bleed banner</option></select></div>
+                            <label class="toggle-label photo-toggle"><input id="photo-enabled" type="checkbox"><span class="toggle-ui"></span><span>Show photo on card</span></label>
+                        </div>
+                        <p id="photo-status" class="field-hint" aria-live="polite">A photo is optional and stays in this card’s share link.</p>
+                        <button id="remove-photo" class="text-button hidden" type="button">Remove photo</button>
+                    </fieldset>
+                    <div class="field-grid seal-settings">
+                        <div class="field"><label for="emblem">Seal / crest emblem</label><select id="emblem"><option value="♥">Heart</option><option value="✦">Star</option><option value="♛">Crown</option><option value="✧">Sparkles</option><option value="☾">Crescent</option><option value="❀">Floral</option><option value="○">Ring</option></select></div>
+                        <div class="field"><label for="seal-color">Seal color</label><select id="seal-color"><option value="#a85b59">Terracotta</option><option value="#b4935f">Antique gold</option><option value="#c6848a">Rose</option><option value="#879b83">Soft sage</option><option value="#9886a6">Muted plum</option></select></div>
+                    </div>
+                    <div class="field"><label for="experience">Opening experience</label><select id="experience"><option value="envelope">Sealed envelope</option><option value="giftbox">Animated gift box</option><option value="moment">Interactive candles / festive moment</option><option value="direct">Direct card / letter</option></select></div>
+                </details>
 
-        <!-- 3. QUICK TEMPLATES VIEW -->
-        <section id="templates-view" class="view-section">
-            <div class="templates-header">
-                <h2 class="templates-title">Quick Wish Templates 📂</h2>
-                <p class="templates-subtitle">Explore premium curated wishes. Click any card to copy or customize.</p>
-            </div>
+                <details class="customize-details">
+                    <summary><span class="step-index">04</span><span><b>Extras &amp; Lock</b><small>Add a personal touch or a little anticipation</small></span><span class="summary-chevron">⌄</span></summary>
+                    <div class="subsection-label"><b>Interactive extras</b><span>Everything here is optional</span></div>
+                    <div class="module-grid">
+                        <label class="module-toggle"><input id="module-teaser" type="checkbox"><span class="toggle-ui"></span><span><b>Front teaser</b><small>A quiet one-line note outside</small></span></label>
+                        <label class="module-toggle"><input id="module-memory" type="checkbox"><span class="toggle-ui"></span><span><b>Memory frame</b><small>Caption, date, and little badge</small></span></label>
+                        <label class="module-toggle"><input id="module-typewriter" type="checkbox"><span class="toggle-ui"></span><span><b>Letter reveal</b><small>Typewriter effect and signature</small></span></label>
+                        <label class="module-toggle"><input id="module-moment" type="checkbox"><span class="toggle-ui"></span><span><b>Celebration moment</b><small>Candle blow or wish reveal</small></span></label>
+                        <label class="module-toggle"><input id="module-scratch" type="checkbox"><span class="toggle-ui"></span><span><b>Scratch-to-reveal</b><small>Gift, blessing, or secret code</small></span></label>
+                        <label class="module-toggle"><input id="module-audio" type="checkbox"><span class="toggle-ui"></span><span><b>Voice / audio note</b><small>Attach a recording or audio URL</small></span></label>
+                    </div>
+                    <div class="field hidden" id="teaser-field"><label for="teaser">Outside teaser</label><input id="teaser" maxlength="90" placeholder="For the days we’ll remember."></div>
+                    <div class="field hidden" id="memory-module-fields"><label for="memory-caption">Keepsake caption</label><input id="memory-caption" maxlength="120" placeholder="Somewhere on the coast"></div>
+                    <div class="field-grid hidden" id="memory-meta-fields">
+                        <div class="field"><label for="memory-date">Date stamp</label><input id="memory-date" type="date"></div>
+                        <div class="field"><label for="memory-badge">Decorative badge</label><select id="memory-badge"><option value="✳">Asterisk</option><option value="♥">Heart</option><option value="✦">Star</option><option value="❧">Leaf</option></select></div>
+                    </div>
+                    <div class="field hidden" id="secret-field"><label for="secret-note">Secret voucher / blessing</label><textarea id="secret-note" rows="2" maxlength="240" placeholder="A dinner on me, your Eidi, a wish to keep…"></textarea></div>
+                    <div class="field hidden" id="audio-field"><label for="audio-url">Audio URL <span>or record a short note</span></label><input id="audio-url" type="url" maxlength="600" placeholder="https://…"><div class="inline-actions"><button id="record-audio" class="text-button" type="button">Record a short voice note</button><button id="stop-recording" class="text-button hidden" type="button">Stop recording</button><span id="recording-status" class="field-hint"></span></div></div>
+                    <div class="effects-row"><label class="toggle-label"><input id="effects-toggle" type="checkbox" checked><span class="toggle-ui"></span><span>Subtle particles</span></label><label class="toggle-label"><input id="chime-toggle" type="checkbox"><span class="toggle-ui"></span><span>Gentle chime</span></label></div>
+                    <div class="subsection-label"><b>Unlock gate</b><span>Leave on instant for no pause</span></div>
+                    <div class="field"><label for="gate-mode">When should it open?</label><select id="gate-mode"><option value="instant">Instant</option><option value="pin">Secret PIN / riddle</option><option value="quiz">Occasion quiz</option><option value="time">Scheduled time-lock</option></select><p class="field-hint">PIN and quiz answers are included in the link, so these are playful pauses—not secure locks.</p></div>
+                    <div id="gate-pin-fields" class="gate-fields hidden"><div class="field"><label for="gate-prompt">Clue or prompt</label><input id="gate-prompt" maxlength="100" placeholder="The month we first met?"></div><div class="field"><label for="gate-answer">PIN / answer</label><input id="gate-answer" maxlength="50" placeholder="Only they will know"></div></div>
+                    <div id="gate-quiz-fields" class="gate-fields hidden"><div class="field"><label for="quiz-question-1">Question one</label><input id="quiz-question-1" maxlength="100"></div><div class="field"><label for="quiz-answer-1">Answer one</label><input id="quiz-answer-1" maxlength="50"></div><div class="field"><label for="quiz-question-2">Question two <span>optional</span></label><input id="quiz-question-2" maxlength="100"></div><div class="field"><label for="quiz-answer-2">Answer two <span>optional</span></label><input id="quiz-answer-2" maxlength="50"></div></div>
+                    <div id="gate-time-fields" class="gate-fields hidden"><div class="field"><label for="unlock-at">Unlock on</label><input id="unlock-at" type="datetime-local"></div></div>
+                </details>
+            </section>
 
-            <!-- Categories Tabs -->
-            <div class="templates-categories">
-                <button class="category-tab active" data-category="short">Short</button>
-                <button class="category-tab" data-category="emotional">Emotional</button>
-                <button class="category-tab" data-category="funny">Funny</button>
-                <button class="category-tab" data-category="best-friend">Best Friend</button>
-                <button class="category-tab" data-category="family">Family</button>
-                <button class="category-tab" data-category="professional">Professional</button>
-                <button class="category-tab" data-category="bengali">বাংলা wishes</button>
-            </div>
-
-            <!-- Templates Grid Container -->
-            <div id="templates-grid" class="templates-grid">
-                <!-- Javascript will load template cards here -->
-            </div>
-        </section>
-
-        <!-- 4. SAVED / FAVORITES VIEW -->
-        <section id="saved-view" class="view-section">
-            <div class="saved-header">
-                <h2 class="saved-title">Saved Wishes 💖</h2>
-                <p class="saved-subtitle">Your favorite wishes stored locally for this browser session.</p>
-            </div>
-
-            <!-- Saved Wishes Grid -->
-            <div id="saved-wishes-grid" class="saved-wishes-grid">
-                <!-- Javascript will populate saved wishes here -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="saved-empty-state" class="empty-state-container">
-                <span class="empty-emoji">🎁</span>
-                <h3>No saved wishes yet</h3>
-                <p>Start generating and save your favorite wishes. They'll show up here!</p>
-                <button class="cta-btn primary-btn" onclick="switchView('generator-view')">Generate a Wish</button>
-            </div>
-        </section>
-
+            <aside class="preview-column" aria-label="Live card preview and share">
+                <section class="preview-panel">
+                    <div class="panel-heading preview-heading"><span class="step-index">LIVE</span><div><h2>A letter, ready to travel</h2><p id="preview-instruction">Unseal the envelope to preview your letter.</p></div></div>
+                    <div id="studio-stage" class="card-stage" data-theme="ivory" data-frame="editorial" data-font="serif" data-experience="envelope">
+                        <div class="postal-chest" aria-hidden="true"><span class="chest-nameplate">✳ &nbsp; CARDISTRY POST</span><span class="chest-slot"></span><i class="chest-rivet chest-rivet-left"></i><i class="chest-rivet chest-rivet-right"></i></div>
+                        <div class="envelope" id="studio-envelope"><div class="envelope-back"></div><div class="envelope-paper"></div><div class="envelope-front"></div><div class="postal-stamp" aria-hidden="true"><span>✳</span><small>POST</small></div><div class="postmark" aria-hidden="true"><span></span><i></i></div><p class="envelope-address" aria-hidden="true"><span>TO</span><strong data-postal-recipient>Your person</strong><small data-postal-occasion>A personal note</small></p><p id="studio-teaser" class="envelope-teaser hidden"></p><button class="wax-seal" id="studio-seal" type="button" aria-label="Unseal your letter"><span class="seal-emblem">♥</span></button></div>
+                        <div class="gift-box" id="studio-gift-box"><div class="gift-box-base"></div><button class="gift-box-lid" id="studio-gift-lid" type="button" aria-label="Lift the gift box lid"><span class="gift-box-emblem">✦</span></button><p id="studio-gift-teaser" class="gift-box-teaser hidden"></p></div>
+                        <article class="greeting-card" id="studio-card">
+                            <span class="card-ornament" id="studio-ornament">✳</span><p class="card-kicker" id="studio-kicker" data-edit="kicker" contenteditable="true" spellcheck="false">A NOTE FOR A DAY WORTH KEEPING</p>
+                            <h3 class="card-recipient" id="studio-recipient" data-edit="recipient" contenteditable="true" spellcheck="false">Your person</h3>
+                            <div class="card-rule"></div>
+                            <p class="card-message" id="studio-message" data-edit="wish" contenteditable="true" spellcheck="false">Your note will find its way here.</p>
+                            <p class="card-memory hidden" id="studio-memory"></p><p class="card-signoff" id="studio-signoff" data-edit="signoff" contenteditable="true" spellcheck="false"></p>
+                            <p class="card-ps hidden" id="studio-ps" data-edit="ps" contenteditable="true" spellcheck="false"></p>
+                            <div class="card-postage-mark" aria-hidden="true"><span>✦</span><small>POST</small></div>
+                            <div id="studio-photo-frame" class="photo-frame hidden"><span class="photo-badge"></span><img class="photo-image hidden" alt=""><div class="photo-placeholder">A memory lives here</div><p class="photo-caption" data-edit="memoryCaption" contenteditable="true" spellcheck="false"></p><time></time></div>
+                            <div id="studio-secret-preview" class="secret-module hidden"><p class="secret-note">A small wish, saved just for you.</p><canvas id="studio-scratch-canvas" width="520" height="130" aria-label="Scratch here to preview the secret"></canvas><span class="scratch-hint">Scratch to preview</span></div>
+                            <div class="studio-moment hidden" id="studio-moment"><div class="occasion-art" id="studio-occasion-art" aria-live="polite"><span>✦</span><span>✧</span><span>✦</span></div><div class="studio-moment-actions"><button id="studio-moment-button" type="button" class="button button-light">Try the celebration moment</button><button id="studio-blow-button" type="button" class="text-button hidden">Blow out the candles</button></div></div>
+                            <button class="card-close" id="studio-close" type="button">Close preview</button>
+                        </article>
+                        <p class="preview-caption" id="preview-caption">A quiet moment before the letter is opened.</p>
+                    </div>
+                    <div class="preview-footer"><span><span class="status-dot"></span> Live letterbox</span><span id="occasion-caption">Birthday · Warm Ivory &amp; Antique Gold</span></div>
+                </section>
+                <section id="share-panel" class="share-panel">
+                    <div class="share-heading"><span class="step-index">05</span><div><h2>Send &amp; Share</h2><p>Your exact card travels in its link. No account needed.</p></div></div>
+                    <div class="share-actions primary-share-actions">
+                        <a id="whatsapp-link" class="button button-whatsapp" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Send via WhatsApp <span aria-hidden="true">↗</span></a>
+                        <button id="copy-link" type="button" class="button button-light">Copy link</button>
+                        <a id="preview-recipient" class="button button-light" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Preview recipient view ↗</a>
+                    </div>
+                    <div class="field share-message-field"><label for="invite-message">Digital invitation <span>optional, customize before sending</span></label><textarea id="invite-message" rows="2" maxlength="240" placeholder="A personal card is waiting for you. Open it when you have a quiet moment."></textarea></div>
+                    <details class="send-more">
+                        <summary><span><b>Send &amp; QR</b><small>Other channels, gift tag, and keepsake</small></span><span class="summary-chevron">⌄</span></summary>
+                        <div class="share-actions secondary-share-actions">
+                            <a id="telegram-link" class="button button-light" href="https://t.me/share/url" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+                            <a id="email-link" class="button button-light" href="mailto:">Email ↗</a>
+                            <button id="native-share" type="button" class="button button-light">Device share ↗</button>
+                            <button id="export-card" type="button" class="button button-light">Save card PNG ↓</button>
+                            <button id="print-card" type="button" class="button button-light">Print card ↗</button>
+                        </div>
+                        <div class="qr-wrap">
+                            <div class="qr-frame" id="qr-frame" data-frame="gold"><div id="qr-code" aria-label="QR code for the greeting card"></div><span class="qr-center">✳</span></div>
+                            <div class="qr-copy"><h3>A gift tag, ready to print</h3><p>Choose a finish for your scannable tag.</p><div class="qr-frame-choices"><button type="button" data-qr-frame="minimal">Minimal</button><button type="button" class="selected" data-qr-frame="gold">Gold border</button><button type="button" data-qr-frame="tag">Gift tag</button></div><button id="download-qr" type="button" class="text-button">Download QR gift tag (PNG) ↓</button></div>
+                        </div>
+                        <p class="privacy-note">The design is encoded directly in the link. To share across devices, publish these three static files at a public URL.</p>
+                    </details>
+                </section>
+            </aside>
+        </div>
+        <footer class="page-footer">Designed with care <span class="brand-emblem">✳</span> Cardistry</footer>
     </main>
 
-    <!-- Mobile Navigation Bottom Bar -->
-    <nav class="mobile-nav">
-        <button class="mobile-nav-btn active" data-target="home-view">
-            <span class="mobile-nav-icon">🏠</span>
-            <span class="mobile-nav-label">Home</span>
-        </button>
-        <button class="mobile-nav-btn" data-target="generator-view">
-            <span class="mobile-nav-icon">🪄</span>
-            <span class="mobile-nav-label">Create</span>
-        </button>
-        <button class="mobile-nav-btn" data-target="templates-view">
-            <span class="mobile-nav-icon">📂</span>
-            <span class="mobile-nav-label">Templates</span>
-        </button>
-        <button class="mobile-nav-btn" data-target="saved-view">
-            <span class="mobile-nav-icon">💖</span>
-            <span class="mobile-nav-label">Saved</span>
-            <span class="mobile-badge hidden">0</span>
-        </button>
-    </nav>
-
-    <!-- Share Options Modal -->
-    <div id="share-modal" class="modal-overlay hidden">
-        <div class="modal-card">
-            <div class="modal-header">
-                <h3>Share Your Birthday Wish</h3>
-                <button class="modal-close" onclick="closeShareModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p class="share-preview-text" id="share-preview"></p>
-                <div class="share-buttons-container">
-                    <button class="share-option-btn whatsapp-share" onclick="shareToWhatsApp()">
-                        <span class="share-icon">💬</span> WhatsApp
-                    </button>
-                    <button class="share-option-btn facebook-share" onclick="shareToFacebook()">
-                        <span class="share-icon">📘</span> Facebook
-                    </button>
-                    <button class="share-option-btn native-share" id="system-share-btn" onclick="shareNative()">
-                        <span class="share-icon">📲</span> System Share
-                    </button>
-                    <button class="share-option-btn copy-share" onclick="copySharedText()">
-                        <span class="share-icon">📋</span> Copy Message
-                    </button>
-                </div>
-            </div>
+    <main id="recipient-experience" class="recipient-experience" aria-label="Interactive greeting card">
+        <header class="recipient-brand"><span class="brand-emblem">✳</span> Cardistry <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false" aria-label="Turn sound on">Sound off</button></header>
+        <section id="gate-screen" class="gate-screen hidden" aria-live="polite">
+            <span class="gate-ornament">✳</span><p class="card-kicker">A NOTE IS WAITING FOR YOU</p><h1 id="gate-title">A small pause before the reveal</h1>
+            <p id="gate-question" class="gate-question"></p><div id="gate-inputs"></div><p id="gate-countdown" class="gate-countdown"></p>
+            <button id="gate-submit" class="button button-dark" type="button">Unlock the envelope</button><p id="gate-error" class="gate-error" aria-live="polite"></p>
+        </section>
+        <div id="recipient-stage" class="card-stage recipient-stage" data-theme="ivory" data-frame="editorial" data-font="serif" data-experience="envelope">
+            <div class="ambient-field" aria-hidden="true"></div>
+            <div class="postal-chest" aria-hidden="true"><span class="chest-nameplate">✳ &nbsp; CARDISTRY POST</span><span class="chest-slot"></span><i class="chest-rivet chest-rivet-left"></i><i class="chest-rivet chest-rivet-right"></i></div>
+            <div class="envelope" id="recipient-envelope"><div class="envelope-back"></div><div class="envelope-paper"></div><div class="envelope-front"></div><div class="postal-stamp" aria-hidden="true"><span>✳</span><small>POST</small></div><div class="postmark" aria-hidden="true"><span></span><i></i></div><p class="envelope-address" aria-hidden="true"><span>TO</span><strong data-postal-recipient></strong><small data-postal-occasion></small></p><p id="recipient-teaser" class="envelope-teaser hidden"></p><button class="wax-seal" id="recipient-seal" type="button" aria-label="Unseal your letter"><span class="seal-emblem">♥</span></button></div>
+            <div class="gift-box" id="recipient-gift-box"><div class="gift-box-base"></div><button class="gift-box-lid" id="recipient-gift-lid" type="button" aria-label="Lift your gift box lid"><span class="gift-box-emblem">✦</span></button><p id="recipient-gift-teaser" class="gift-box-teaser hidden"></p></div>
+            <article class="greeting-card" id="recipient-card">
+                <span class="card-ornament" id="recipient-ornament">✳</span><p class="card-kicker" id="recipient-kicker"></p>
+                <h1 class="card-recipient" id="recipient-card-name"></h1><div class="card-rule"></div>
+                <p class="card-message" id="recipient-card-message"></p><p class="card-memory hidden" id="recipient-card-memory"></p>
+                <p class="card-signoff" id="recipient-card-signoff"></p><p class="card-ps hidden" id="recipient-card-ps"></p>
+                <div class="card-postage-mark" aria-hidden="true"><span>✦</span><small>POST</small></div>
+                <div id="recipient-photo-frame" class="photo-frame hidden"><span class="photo-badge"></span><img class="photo-image hidden" alt=""><div class="photo-placeholder">A memory lives here</div><p class="photo-caption"></p><time></time></div>
+                <div id="recipient-moment" class="recipient-moment hidden"><div class="occasion-art" id="occasion-art"><span>✦</span><span>✧</span><span>✦</span></div><button id="moment-button" type="button" class="button button-light">Make a wish</button><button id="blow-button" type="button" class="text-button hidden">Blow out the candles · tap if you prefer</button><button id="mic-blow-button" type="button" class="text-button hidden">Use microphone to blow</button></div>
+                <div id="recipient-secret" class="secret-module hidden"><p class="secret-note"></p><canvas id="scratch-canvas" width="520" height="130" aria-label="Scratch here to reveal your secret"></canvas><span class="scratch-hint">Scratch to reveal</span></div>
+                <audio id="recipient-audio" class="recipient-audio hidden" controls preload="none"></audio>
+                <button id="create-own-card" class="button button-light create-own-button" type="button">Create your own with Cardistry <span>↗</span></button>
+            </article>
         </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast-container" class="toast-container"></div>
-
-    <script src="script.js"></script>
+        <p class="recipient-prompt" id="recipient-prompt">A note, sealed with care.</p>
+        <button id="replay-experience" class="replay-button hidden" type="button">Replay experience ↺</button>
+        <footer class="recipient-footer"><span class="brand-emblem">✳</span> Cardistry · Make a moment memorable.</footer>
+    </main>
+    <div id="confetti-layer" class="confetti-layer" aria-hidden="true"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <noscript>This greeting card studio needs JavaScript enabled.</noscript>
 </body>
 </html>
